@@ -167,9 +167,9 @@ int main(){
 	int new_divisor = 50000000/2400 - 1;
 	char char_to_print;
 	//status_content = IORD_ALTERA_AVALON_UART_STATUS(UART_0_BASE); //manual clearing of the status reg
-	status_content = *(base + STATUS_OFFSET);
+	//status_content = *(base + STATUS_OFFSET);
 	//IOWR_ALTERA_AVALON_UART_STATUS(UART_0_BASE, status_content & 0x11F);
-	*(base + STATUS_OFFSET) = status_content & 0x11F;
+	//*(base + STATUS_OFFSET) = status_content & 0x11F;
 	//IOWR_ALTERA_AVALON_UART_DIVISOR(UART_0_BASE, new_divisor);
 	*(base + DIVISOR_OFFSET) = new_divisor;
 	//IOWR_ALTERA_AVALON_UART_CONTROL(UART_0_BASE, 0);
@@ -200,9 +200,9 @@ int main(){
 	int new_divisor = 50000000/2400 - 1;
 	char char_to_print;
 	//status_content = IORD_ALTERA_AVALON_UART_STATUS(UART_0_BASE); //manual clearing of the status reg
-	status_content = *(base + STATUS_OFFSET);
+	//status_content = *(base + STATUS_OFFSET);
 	//IOWR_ALTERA_AVALON_UART_STATUS(UART_0_BASE, status_content & 0x11F);
-	*(base + STATUS_OFFSET) = status_content & 0x11F;
+	//*(base + STATUS_OFFSET) = status_content & 0x11F;
 	//IOWR_ALTERA_AVALON_UART_DIVISOR(UART_0_BASE, new_divisor);
 	*(base + DIVISOR_OFFSET) = new_divisor;
 	//IOWR_ALTERA_AVALON_UART_CONTROL(UART_0_BASE, 0);
@@ -217,7 +217,8 @@ int main(){
 		//status_after = IORD_ALTERA_AVALON_UART_STATUS(UART_0_BASE);
 		status_after = *(base + STATUS_OFFSET);
 		printf("Status Reg before reading: 0x%X\n", status_after); //if we write more than 1 char at a time: status reg=0x168
-		usleep(1000000);
+		*(base + STATUS_OFFSET) = 0; //clearing status register
+		//usleep(1000000);
 	}
 }
 #endif
